@@ -159,11 +159,7 @@ namespace SimConnectForms {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            //getVars();
-            while (true) {
-                getVars();
-            }
-
+            getVars();
         }
     }
 }
