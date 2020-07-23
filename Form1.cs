@@ -46,8 +46,10 @@ namespace SimConnectForms {
 
         public DiscordRpcClient Client { get; private set; }
 
+
+
         void setup() {
-            Client = new DiscordRpcClient("735335622323077204");
+            Client = new DiscordRpcClient("REDACTED");
             Client.Initialize();
         }
 
@@ -159,7 +161,18 @@ namespace SimConnectForms {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            getVars();
+            (new Thread(() => {
+                while (true) {
+                    getVars();
+                    Thread.Sleep(5000);
+                }
+            })).Start();
+            //getVars();
+        }
+
+        private void Form1_FormClosed(object sender, System.ComponentModel.CancelEventArgs eventArgs) {
+            cleanup();
+            closeConnection();
         }
     }
 }
